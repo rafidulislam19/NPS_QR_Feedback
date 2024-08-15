@@ -1,11 +1,13 @@
 from django.contrib import admin
-from .models.sources import Source, SourceAdmin
-from .models.data_upload import DataUpload, DataUploadAdmin
-from .models.customer_responses import CustomerResponses, CustomCustomerResponseAdmin
-from .models.questions import Question, QuestionAdmin
+from .models.activity_logs import LogEntry, LogEntryAdmin
+from .models.user_activity_logs import UserActivityLogs, UserActivityLogsAdmin
+from .models.task_logs import TaskLog, TaskLogAdmin 
+from .models.job_logs import JobLog, JobLogAdmin
+# Register your models here.
 
 
-admin.site.register(Source, SourceAdmin)
-admin.site.register(Question, QuestionAdmin)
-admin.site.register(DataUpload, DataUploadAdmin)
-admin.site.register(CustomerResponses, CustomCustomerResponseAdmin)
+admin.site.register(LogEntry, LogEntryAdmin)
+admin.site.register(UserActivityLogs, UserActivityLogsAdmin)
+admin.site.register(TaskLog, TaskLogAdmin)
+admin.site.register(JobLog, JobLogAdmin)
+

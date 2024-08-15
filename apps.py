@@ -1,9 +1,10 @@
 from django.apps import AppConfig
+from django.utils.translation import gettext_lazy as _
 
-
-class FeedbacksConfig(AppConfig):
+class LogConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'feedbacks'
+    name = 'log'
+    verbose_name = _("System Logs")
 
-    def ready(self) -> None:
-        import feedbacks.signals
+    def ready(self):
+        import log.signals
