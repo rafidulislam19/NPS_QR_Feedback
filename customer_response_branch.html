@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="post" class="needs-validation" id="form" novalidate>
+    {% csrf_token %}
+    <input type="text" name="source" id="source" value="{{ id }}" hidden>
+    <div class="container mb-2">
+        <div class="row">
+            <div class="col-12 mb-2 form-element-address">
+                <div class="input-group">
+                    <span class="input-group-text font-size-sm bg-white">
+                        <!-- <span class="material-symbols-outlined font-size-sm">Branch Name</span> -->
+                        Branch Name
+                    </span>
+                    <input required type="text" name="sourcename" id="sourcename" aria-label="sourcename"
+                        class="form-control border-end rounded-end font-size-sm bg-white" placeholder="{{name}}"
+                        disabled>
+                </div>
+            </div>
+            <div class="col-12 mb-2 form-element no-lr-pad">
+                <div class="input-group">
+                    <span required class="input-group-text font-size-sm"> আপনার মোবাইল নাম্বার </span>
+                    <input type="text" name="contact" id="contact" aria-label="contact"
+                        class="form-control border-end rounded-end font-size-sm" placeholder="01xxxxxxxxx"
+                        maxlength="11" minlength="11">
+                </div>
+                <div class="error-container">
+                    <span id="error-message" class="error-message"></span>
+                </div>
+            </div>
+
+            <div class="col-12 mb-2 border rounded px-3 form-element">
+                <p class="">১. আপনার সার্ভিসটি পাওয়ার পূর্বে আপনাকে কতক্ষণ অপেক্ষা করতে হয়েছে?</p>
+                <div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="waiting_time" id="lessThanFive"
+                            value='Less than 5 miniute' checked>
+                        <label class="form-check-label" for="lessThanFive">
+                            ৫ মিনিটের কম
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="waiting_time" id="fiveToFifteen"
+                            value='5 to 15 miniute'>
+                        <label class="form-check-label" for="fiveToFifteen">
+                            ৫ থেকে ১৫ মিনিট
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="waiting_time" id="fifteenToThirty"
+                            value='15 to 30 miniute'>
+                        <label class="form-check-label" for="fifteenToThirty">
+                            ১৫ থেকে ৩০ মিনিট
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="waiting_time" id="moreThanThirty"
+                            value='More Than 30 miniute'>
+                        <label class="form-check-label" for="moreThanThirty">
+                            ৩০ মিনিটের বেশি
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12 mb-2 border rounded px-3 form-element">
+                <p class="">২. সার্ভিস শুরু করা থেকে শেষ করা পর্যন্ত আপনার কতক্ষণ সময় লেগেছে?</p>
+                <div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="service_time" id="lessThanTen"
+                            value='Less than 10 miniute' checked>
+                        <label class="form-check-label" for="lessThanTen">
+                            ১০ মিনিটের কম
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="service_time" id="tenToTwenty"
+                            value='10 to 20 miniute'>
+                        <label class="form-check-label" for="tenToTwenty">
+                            ১০ থেকে ২০ মিনিট
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="service_time" id="twentyToThirty"
+                            value='20 to 30 miniute'>
+                        <label class="form-check-label" for="twentyToThirty">
+                            ২০ থেকে ৩০ মিনিট
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="service_time" id="moreThanThirty"
+                            value='More Than 30 miniute'>
+                        <label class="form-check-label" for="moreThanThirty">
+                            ৩০ মিনিটের বেশি
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 mb-2 border rounded px-3 form-element">
+                <p class="">৩. আপনি যার কাছ থেকে সার্ভিসটি নিয়েছেন, তার সার্ভিস এবং ব্যবহারে আপনি কতটুকু সন্তুষ্ট? (০-৫
+                    এর মধ্যে নির্বাচন করুন, যেখানে ০ = অসন্তুষ্ট এবং ৫ = সম্পূর্ণ সন্তুষ্ট )</p>
+                <div>
+                    {% include 'form_elements/rating.html' with inputId="service_staff_behaviour"%}
+                </div>
+                <div class="error-container">
+                    <span id="error-message-rating" class="error-message-rating"></span>
+                </div>
+            </div>
+
+            <div class="col-12 mb-2 border rounded px-3 form-element">
+                <p class="">৪. আমাদের অধিকাংশ সেবাই আমাদের ইন্টারনেট ব্যাংকিং প্লাটফর্ম এবং অ্যাপ, “আস্থা” থেকে নেওয়া
+                    সম্ভব। আপনি কি “আস্থা অ্যাপ” এবং “আস্থা সেবা” এর ব্যাপারে অবগত? </p>
+                <div>
+                    {% include 'form_elements/yes_no.html' with inputId='astha_app_service' %}
+                </div>
+            </div>
+
+            <div class="col-12 mb-2 border rounded px-3 form-element">
+                <p class="">৫. সব মিলিয়ে, ব্র্যাক ব্যাংকে আপনার অভিজ্ঞতা কেমন ছিলো? (০-৫ এর মধ্যে নির্বাচন করুন, যেখানে
+                    ০ = অসন্তোষজনক এবং অগ্রহণযোগ্য এবং ৫ = সন্তোষজনক) </p>
+                <div>
+                    {% include 'form_elements/rating.html' with inputId="bbl_experience"%}
+                </div>
+                <div class="error-container">
+                    <span id="error-message-rating" class="error-message-rating"></span>
+                </div>
+            </div>
+
+            <div class="input-group no-lr-pad rounded">
+                <!-- <textarea name="comment" class="form-control font-size-sm" placeholder="Leave a comment here"
+                    id="comment" style="height: 80px"></textarea>
+                <label for="comment" aria-placeholder="আপনার মূল্যবান মতামত (যদি থেকে থাকে)"> </label> -->
+                <input type="text" name="comment" id="comment" aria-label="comment" class="form-control font-size-bg"
+                    placeholder="আপনার মূল্যবান মতামত (যদি থেকে থাকে)">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-sm btn-outline-bbl">Submit</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% comment %} <div class="col-12 mb-2 border rounded px-3 form-element">
+    <p class="">১. আপনার কি ব্র্যাক ব্যাংকে একাউন্ট আছে? </p>
+    <div>
+        {% include 'form_elements/yes_no.html' with inputId='bbl_ac_holder' %}
+    </div>
+</div> {% endcomment %}
+
+{% comment %} <div class="col-12 mb-2 border rounded px-3 form-element">
+    <p class="">২. আপনি আজকে ব্র্যাক ব্যাংক থেকে কোন সার্ভিসটি নিয়েছেন?</p>
+    <div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="service_taken" id="cashService" value='Cash' checked>
+            <label class="form-check-label" for="cashService">
+                নগদ টাকা তোলা / জমা দেওয়া
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="service_taken" id="generalService" value='General'>
+            <label class="form-check-label" for="generalService">
+                জেনারেল সার্ভিস
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="service_taken" id="informationService"
+                value='Information'>
+            <label class="form-check-label" for="informationService">
+                তথ্য সংগ্রহ
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="service_taken" id="foreignCurrencyService"
+                value='Foreign Currency'>
+            <label class="form-check-label" for="foreignCurrencyService">
+                বৈদেশিক মুদ্রা সম্পর্কিত সার্ভিস
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="col-12 mb-2 border rounded px-3 form-element">
+    <p class="">৩. আপনি কি আপনার পছন্দের সার্ভিসটি যথাযথ ভাবে পেয়েছেন?</p>
+    <div>
+        {% include 'form_elements/rating.html' with inputId="got_service"%}
+    </div>
+</div>
+
+<div class="col-12 mb-2 border rounded px-3 form-element">
+    <p class="">৩. আপনি কি আশানুরুপ সময়ের ভেতরে আপনার সার্ভিসটি পেয়েছেন?</p>
+    <div>
+        {% include 'form_elements/rating.html' with inputId="service_time"%}
+    </div>
+</div> {% endcomment %}
+
+
+{% comment %} <div class="col-12 mb-2 border rounded px-3 form-element">
+    <p class="">৬. আপনি কি আপনাকে সহায়তা করা সিকিউরিটি গার্ডের ব্যবহারে সন্তুষ্ট? </p>
+    <div>
+        {% include 'form_elements/rating.html' with inputId="behaviour_of_guard"%}
+    </div>
+</div>
+
+<div class="col-12 mb-2 border rounded px-3 form-element">
+    <p class="">৭. আপনি যেই শাখা থেকে সার্ভিসটি নিয়েছেন, সেই জায়গাটি কি পরিষ্কার পরিচ্ছন্ন ছিলো? </p>
+    <div>
+        {% include 'form_elements/rating.html' with inputId="cleanliness"%}
+    </div>
+</div> {% endcomment %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="p-3 border rounded" >
+        <p>Dear Customer,</p>
+
+        <p>
+            Thank you for your valuable feedback regarding our {{ name }}. 
+            Our team will look into your feedback, and take necessary actions.
+        </p>
+    
+        <p class"submit-p-1">Sincerely,</p>
+        <p class"submit-p-2">BRAC Bank PLC.</p>
+    </div>
+
+    {{ el }}
+{% endblock %}

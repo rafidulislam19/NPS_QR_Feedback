@@ -1,0 +1,257 @@
+<html lang="en" class="h-100">
+    {% load static %}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Hugo 0.84.0">
+        <title>{{ page_title }}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <link href="/static_files/unfold/fonts/material-symbols/styles.css" rel="stylesheet">
+        
+        <style>
+            body {
+                font-family: Roboto,Lucida Grande,DejaVu Sans, Bitstream Vera Sans ,Verdana,Arial,sans-serif;
+                font-size: .8rem;
+            }
+
+            p {
+                margin-top: 8px !important;
+                margin-bottom: 8px !important;
+            }
+
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                /* text-anchor: middle; */
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+
+            .cover-container {
+                max-width: 42em;
+            }
+
+            .nav-masthead .nav-link {
+                padding: .25rem 0;
+                font-weight: 700;
+                color: rgba(255, 255, 255, .5);
+                background-color: transparent;
+                border-bottom: .25rem solid transparent;
+            }
+
+            .nav-masthead .nav-link:hover,
+            .nav-masthead .nav-link:focus {
+                border-bottom-color: rgba(255, 255, 255, .25);
+            }
+
+            .nav-masthead .nav-link + .nav-link {
+                margin-left: 1rem;
+            }
+
+            .nav-masthead .active {
+                color: #fdf90d;
+                border-bottom-color: #fdf90d;
+            }
+
+            .form-element {
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            }
+
+            .form-element-address {
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                padding-right: 0px !important;
+                padding-left: 0px !important;
+            }
+
+            .font-size-sm {
+                font-size: .8rem;
+            }
+
+            .no-lr-pad {
+                padding-right: 0 !important; padding-left: 0 !important;
+            }
+            .btn-outline-bbl {
+                --bs-btn-color: #0d6efd;
+                --bs-btn-border-color: #0d6efd;
+                --bs-btn-hover-color: #ccc91e;
+                --bs-btn-hover-bg: #0d6efd;
+                --bs-btn-hover-border-color: #0d6efd;
+                --bs-btn-focus-shadow-rgb: 13, 110, 253;
+                --bs-btn-active-color: #ccc91e;
+                --bs-btn-active-bg: #0d6efd;
+                --bs-btn-active-border-color: #0d6efd;
+                --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+                --bs-btn-disabled-color: #0d6efd;
+                --bs-btn-disabled-bg: transparent;
+                --bs-btn-disabled-border-color: #0d6efd;
+                --bs-gradient: none;
+            }
+            input::placeholder{
+                font-size: small;
+            }
+            .float span{
+                display: none;
+            }
+            .error-container{
+                text-align:justify;
+                align-items:center;
+            }
+            .error-message{
+                color: red;
+            }
+            .error-message-rating{
+                color: red;
+            }
+            .hr-body{
+                margin-top: 0px !important;
+            }
+            .hr-footer{
+                margin-top: 0px !important;
+                margin-bottom: 0px !important;
+            }
+            .mt-auto{
+                margin-bottom: 10px !important;
+            }
+            .p-2{
+                font-family: Roboto,Lucida Grande,DejaVu Sans, Bitstream Vera Sans ,Verdana,Arial,sans-serif;
+                font-size: .8rem;
+                padding-bottom: 0px !important;
+                margin-bottom: 0px !important;
+            }
+            .submit-p-1{
+                margin-bottom: 0px !important;
+            }
+            .submit-p-2{
+                margin-top: 0px !important;
+            }
+        </style>
+        <!-- <script src="chrome-extension://ajdpfmkffanmkhejnopjppegokpogffp/assets/prompt.js"></script> -->
+    </head>
+
+    <body class="d-flex h-100 text-center text-dark bg-white">
+
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <header class="mb-auto text-center">
+                <div>
+                    <img class="d-block mx-auto mb-2" src="{% static 'images/BBL-logo.png' %}" width="200px">
+                </div>
+                <!-- <div class="text-center mb-2" style="padding-right: 0 !important; padding-left: 0 !important;">
+                    <span class="material-symbols-outlined font-size-sm">distance</span> <span> {{ name }} </span> 
+                </div> -->
+                <hr class='hr-body'>
+            </header>
+
+            <main class="px-3 text-start">
+                {% block content %}
+
+                {% endblock %}
+            </main>
+
+            <footer class="mt-auto">
+                <hr class="hr-footer">
+                <div class="text-center p-2">
+                    <a>© 2024 Copyright: BRAC Bank PLC</a>
+                </div>
+            </footer>
+        </div>
+
+    </body>
+</html>
+
+<script>
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+
+<script>
+    const form = document.getElementById('form');
+    const input = document.getElementById('contact');
+    const errorMessage = document.getElementById('error-message');
+    form.addEventListener('submit', function(event) {
+        const value = input.value;
+        // Convert Bangla digits to English digits for consistency
+        const banglaToEnglishMap = {
+            '০': '0', '১': '1', '২': '2', '৩': '3', '৪': '4', '৫': '5', '৬': '6', '৭': '7', '৮': '8', '৯': '9'
+        };
+        const convertedValue = value.replace(/[০-৯]/g, match => banglaToEnglishMap[match]);
+        const lenVal = convertedValue.length;
+        // Validate the first three digits
+        const validPrefixes = ['013', '014', '015', '016', '017', '018', '019']; // Add your specific prefixes here
+        const firstThreeDigits = convertedValue.slice(0, 3);
+        // Regex pattern to check for valid digits (English and Bangla)
+        const pattern = /^[0-9০-৯]+$/;
+        if (lenVal == 0){
+            // errorMessage.textContent = 'এখানে আপনার মোবাইল নাম্বার আবশ্যক।';
+            // event.preventDefault();
+            errorMessage.textContent = '';
+            errorMessage.style.display='none';
+        } 
+        else if (lenVal != 11){
+            errorMessage.textContent = 'মোবাইল নাম্বার ১১ সংখ্যার কম হওয়া যাবে না।';
+            errorMessage.style.display='block';
+            event.preventDefault();
+        } else if (!pattern.test(value)) {
+            errorMessage.textContent = 'অনুগ্রহ করে শুধুমাত্র সংখ্যাসূচক সংখ্যা লিখুন (ইংরেজি বা বাংলা)।';
+            errorMessage.style.display='block';
+            event.preventDefault();
+        } else if (!validPrefixes.includes(firstThreeDigits)) {
+            errorMessage.textContent = 'প্রথম তিনটি সংখ্যা অবশ্যই নিম্নলিখিত সংখ্যাগুলির মধ্যে হতে হবে (ইংরেজি বা বাংলা): ০১৩, ০১৪, ০১৫,০১৬, ০১৭, ০১৮, ০১৯';
+            errorMessage.style.display='block';
+            event.preventDefault();
+        } else {
+            errorMessage.textContent = '';
+            errorMessage.style.display='none';
+        }
+    });
+</script>
+
+<script>
+var all = document.querySelectorAll(".btn-check");
+const errorMessageRating = document.getElementById('error-message-rating');
+const questionCount = document.querySelectorAll("#error-message-rating").length;
+console.log(questionCount);
+form.addEventListener('submit', function(event) {
+    var supplied = 0;
+    for(var i = 0;i < all.length;i++){
+        var customerInput = all[i];
+        console.log(customerInput.checked)
+        if(customerInput.checked)
+        {
+            supplied++;
+        }
+    }
+    console.log(supplied)
+    if(supplied < questionCount){ 
+        // errorMessageRating.textContent = "অন্তত একটি মান নির্বাচন করুন।"; 
+        alert("দয়া করে সমীক্ষা সম্পূর্ণ করুন।");
+        event.preventDefault();
+        event.stopPropagation()
+    }
+});
+</script>

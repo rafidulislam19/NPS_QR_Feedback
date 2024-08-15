@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="post" class="needs-validation" id="form" novalidate>
+    {% csrf_token %}
+    <input type="text" name="source" id="source" value="{{ id }}" hidden>
+    <div class="container mb-2">
+        <div class="row">
+            <div class="col-12 mb-2 form-element-address">
+                <div class="input-group">
+                    <span class="input-group-text font-size-sm bg-white">
+                        <!-- <span class="material-symbols-outlined font-size-sm">ATM Name</span> -->
+                        ATM Name
+                    </span>
+                    <input required type="text" name="sourcename" id="sourcename" aria-label="sourcename"
+                        class="form-control border-end rounded-end font-size-sm bg-white" placeholder="{{name}}"
+                        disabled>
+
+                </div>
+            </div>
+            <div class="col-12 mb-2 form-element no-lr-pad">
+                <div class="input-group">
+                    <span class="input-group-text font-size-sm"> আপনার মোবাইল নাম্বার </span>
+                    <input type="text" name="contact" id="contact" aria-label="contact"
+                        class="form-control border-end rounded-end font-size-sm" placeholder="01xxxxxxxxx"
+                        maxlength="11" minlength="11">
+                </div>
+                <div class="error-container">
+                    <span id="error-message" class="error-message"></span>
+                </div>
+            </div>
+            
+            <div class="col-12 mb-2 border rounded px-3 form-element">
+                <p class="">১. আপনি যেই এটিএম বুথ থেকে সেবা নিয়েছেন, সেই বুথে কি কোন সিকিউরিটি গার্ড উপস্থিত ছিলেন?</p>
+                <div>
+                    {% include 'form_elements/yes_no.html' with inputId='guard_present' %}
+                </div>
+            </div>
+
+            <div class="col-12 mb-2 border rounded px-3 form-element">
+                <p class="">২. আপনাকে সহায়তা করা সিকিউরিটি গার্ডের সার্ভিসে আপনি কতটুকু সন্তুষ্ট? (০-৫ এর মধ্যে নির্বাচন
+                    করুন, যেখানে ০ = অসন্তুষ্ট এবং ৫ = সম্পূর্ণ সন্তুষ্ট ) </p>
+                <div>
+                    {% include 'form_elements/rating.html' with inputId="behaviour_of_guard"%}
+                </div>
+                <div class="error-container">
+                    <span id="error-message-rating" class="error-message-rating"></span>
+                </div>
+            </div>
+
+            <div class="col-12 mb-2 border rounded px-3 form-element">
+                <p class="">৩. আপনি যেই এটিএম বুথ থেকে সার্ভিসটি নিয়েছেন, সেই বুথের পরিষ্কার পরিচ্ছন্নতা কেমন ছিলো? (০-৫
+                    এর মধ্যে নির্বাচন করুন, যেখানে ০ = নোংরা এবং অগ্রহণযোগ্য এবং ৫ = পরিষ্কার পরিচ্ছন্ন) </p>
+                <div>
+                    {% include 'form_elements/rating.html' with inputId="cleanliness"%}
+                </div>
+                <div class="error-container">
+                    <span id="error-message-rating" class="error-message-rating"></span>
+                </div>
+            </div>
+
+            <div class="col-12 mb-2 border rounded px-3 form-element">
+                <p class="">৪. এটিএম থেকে আপনার পাওয়া নোটগুলো কি সন্তোষজনক ছিলো? </p>
+                <div>
+                    {% include 'form_elements/yes_no.html' with inputId='cash_note' %}
+                </div>
+            </div>
+
+            <div class="col-12 mb-2 border rounded px-3 form-element">
+                <p class="">৫. আপনি এটিএম বুথ থেকে সার্ভিসটি আপনার সন্তোষজনক সময়ের মধ্যে পেয়েছেন কিনা? (০-৫ এর মধ্যে নির্বাচন করুন, 
+                    যেখানে ০ = অসন্তোষজনক এবং অগ্রহণযোগ্য এবং ৫ = সন্তোষজনক) </p>
+                <div>
+                    {% include 'form_elements/rating.html' with inputId="atm_service_time"%}
+                <div class="error-container">
+                    <span id="error-message-rating" class="error-message-rating"></span>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-12 mb-2 border rounded px-3 form-element">
+                <p class="">৬. সব মিলিয়ে, আমাদের এটিএম বুথে আপনার অভিজ্ঞতা কেমন ছিলো? (০-৫ এর মধ্যে নির্বাচন করুন,
+                    যেখানে ০ = অসন্তোষজনক এবং অগ্রহণযোগ্য এবং ৫ = সন্তোষজনক) </p>
+                <div>
+                    {% include 'form_elements/rating.html' with inputId="atm_experience"%}
+                    <div class="error-container">
+                        <span id="error-message-rating" class="error-message-rating"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-12 mb-2 border rounded px-3 form-element">
+                <p class="">৫. আপনি যেই এটিএম বুথ থেকে সেবা নিয়েছেন, সেই বুথে কি কোন সিকিউরিটি গার্ড উপস্থিত ছিলেন?</p>
+                <div>
+                    {% include 'form_elements/yes_no.html' with inputId='guard_present' %}
+                </div>
+            </div> -->
+
+            <div class="input-group no-lr-pad rounded">
+                <!-- <textarea name="comment" class="form-control font-size-sm" placeholder="Leave a comment here"
+                    id="comment" style="height: 80px"
+                    aria-placeholder="আপনার মূল্যবান মতামত (যদি থেকে থাকে)"></textarea> -->
+                <!-- <label for="comment"> আপনার মূল্যবান মতামত (যদি থেকে থাকে) </label> -->
+
+                <input type="text" name="comment" id="comment" aria-label="comment" class="form-control font-size-bg"
+                    placeholder="আপনার মূল্যবান মতামত (যদি থেকে থাকে)">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-sm btn-outline-bbl">Submit</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+
+
+{% comment %} <div class="col-12 mb-2 border rounded px-3 form-element">
+    <p class="">১. আপনার কি ব্র্যাক ব্যাংকে একাউন্ট আছে? </p>
+    <div>
+        {% include 'form_elements/yes_no.html' with inputId='bbl_ac_holder' %}
+    </div>
+</div>
+
+<div class="col-12 mb-2 border rounded px-3 form-element">
+    <p class="">২. আপনি কি আপনার পছন্দের সার্ভিসটি যথাযথ ভাবে পেয়েছেন?</p>
+    <div>
+        {% include 'form_elements/rating.html' with inputId="got_service"%}
+    </div>
+</div> {% endcomment %}
