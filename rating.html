@@ -1,0 +1,251 @@
+{% comment %} <div class="mb-2">
+    <div class="row mx-auto">
+        <div class="col-1 p-1">
+            <input type="radio" class="btn-check" value="1" name="{{ inputId }}" id="{{ inputId }}_one">
+            <label class="btn btn-scale btn-scale-desc-1" for="{{ inputId }}_one"> 1 </label>
+        </div>
+        <div class="col-1 p-1">
+            <input type="radio" class="btn-check" value="2" name="{{ inputId }}" id="{{ inputId }}_two">
+            <label class="btn btn-scale btn-scale-desc-2" for="{{ inputId }}_two"> 2 </label>
+        </div>
+        <div class="col-1 p-1">
+            <input type="radio" class="btn-check" value="3" name="{{ inputId }}" id="{{ inputId }}_three">
+            <label class="btn btn-scale btn-scale-desc-3" for="{{ inputId }}_three"> 3 </label>
+        </div>
+        <div class="col-1 p-1">
+            <input type="radio" class="btn-check" value="4" name="{{ inputId }}" id="{{ inputId }}_four">
+            <label class="btn btn-scale btn-scale-desc-4" for="{{ inputId }}_four"> 4 </label>
+        </div>
+        <div class="col-1 p-1">
+            <input type="radio" class="btn-check" value="5" name="{{ inputId }}" id="{{ inputId }}_five">
+            <label class="btn btn-scale btn-scale-desc-5" for="{{ inputId }}_five"> 5 </label>
+        </div>
+        <div class="col-1 p-1">
+            <input type="radio" class="btn-check" value="6" name="{{ inputId }}" id="{{ inputId }}_six">
+            <label class="btn btn-scale btn-scale-desc-6" for="{{ inputId }}_six"> 6 </label>
+        </div>
+        <div class="col-1 p-1">
+            <input type="radio" class="btn-check" value="7" name="{{ inputId }}" id="{{ inputId }}_seven">
+            <label class="btn btn-scale btn-scale-desc-7" for="{{ inputId }}_seven"> 7 </label>
+        </div>
+        <div class="col-1 p-1">
+            <input type="radio" class="btn-check" value="8" name="{{ inputId }}" id="{{ inputId }}_eight">
+            <label class="btn btn-scale btn-scale-desc-8" for="{{ inputId }}_eight"> 8 </label>
+        </div>
+        <div class="col-1 p-1">
+            <input type="radio" class="btn-check" value="9" name="{{ inputId }}" id="{{ inputId }}_nine">
+            <label class="btn btn-scale btn-scale-desc-9" for="{{ inputId }}_nine"> 9 </label>
+        </div>
+        <div class="col-1 p-1">
+            <input type="radio" class="btn-check" value="10" name="{{ inputId }}" id="{{ inputId }}_ten">
+            <label class="btn btn-scale btn-scale-desc-10" for="{{ inputId }}_ten"> 10 </label>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-scale {
+        text-align: center;
+        color: black;
+        font-size: .65rem !important;
+    }
+
+    .btn-scale-asc-1,
+    .btn-scale-desc-10 {
+        background-color: #33FF00 !important;
+    }
+
+    .btn-scale-asc-1:hover,
+    .btn-scale-desc-10:hover {
+        background-color: #2CDE00 !important;
+    }
+
+    .btn-scale-asc-2,
+    .btn-scale-desc-9 {
+        background-color: #66FF00 !important;
+    }
+
+    .btn-scale-asc-2:hover,
+    .btn-scale-desc-9:hover {
+        background-color: #59DE00 !important;
+    }
+
+    .btn-scale-asc-3,
+    .btn-scale-desc-8 {
+        background-color: #99FF00 !important;
+    }
+
+    .btn-scale-asc-3:hover,
+    .btn-scale-desc-8:hover {
+        background-color: #85DE00 !important;
+    }
+
+    .btn-scale-asc-4,
+    .btn-scale-desc-7 {
+        background-color: #CCFF00 !important;
+    }
+
+    .btn-scale-asc-4:hover,
+    .btn-scale-desc-7:hover {
+        background-color: #B1DE00 !important;
+    }
+
+    .btn-scale-asc-5,
+    .btn-scale-desc-6 {
+        background-color: #FFFF00 !important;
+    }
+
+    .btn-scale-asc-5:hover,
+    .btn-scale-desc-6:hover {
+        background-color: #DEDE00 !important;
+    }
+
+    .btn-scale-asc-6,
+    .btn-scale-desc-5 {
+        background-color: #FFCC00 !important;
+    }
+
+    .btn-scale-asc-6:hover,
+    .btn-scale-desc-5:hover {
+        background-color: #DEB100 !important;
+    }
+
+    .btn-scale-asc-7,
+    .btn-scale-desc-4 {
+        background-color: #FF9900 !important;
+    }
+
+    .btn-scale-asc-7:hover,
+    .btn-scale-desc-4:hover {
+        background-color: #DE8500 !important;
+    }
+
+    .btn-scale-asc-8,
+    .btn-scale-desc-3 {
+        background-color: #FF6600 !important;
+    }
+
+    .btn-scale-asc-8:hover,
+    .btn-scale-desc-3:hover {
+        background-color: #DE5900 !important;
+    }
+
+    .btn-scale-asc-9,
+    .btn-scale-desc-2 {
+        background-color: #FF3300 !important;
+    }
+
+    .btn-scale-asc-9:hover,
+    .btn-scale-desc-2:hover {
+        background-color: #DE2C00 !important;
+    }
+
+    .btn-scale-asc-10,
+    .btn-scale-desc-1 {
+        background-color: #FF0000 !important;
+    }
+
+    .btn-scale-asc-10:hover,
+    .btn-scale-desc-1:hover {
+        background-color: #DE0000 !important;
+    }
+</style> {% endcomment %}
+
+
+<div class="container mb-2">
+    <div class="row">
+        <div class="col p-1">
+            <input type="radio" class="btn-check" value="0" name="{{ inputId }}" id="{{ inputId }}_zero" checked>
+            <label class="btn btn-scale btn-scale-desc-0 w-100" for="{{ inputId }}_zero"> 0 </label>
+        </div>
+        <div class="col p-1">
+            <input type="radio" class="btn-check" value="1" name="{{ inputId }}" id="{{ inputId }}_one">
+            <label class="btn btn-scale btn-scale-desc-1 w-100" for="{{ inputId }}_one"> 1 </label>
+        </div>
+        <div class="col p-1">
+            <input type="radio" class="btn-check" value="2" name="{{ inputId }}" id="{{ inputId }}_two">
+            <label class="btn btn-scale btn-scale-desc-2 w-100" for="{{ inputId }}_two"> 2 </label>
+        </div>
+        <div class="col p-1">
+            <input type="radio" class="btn-check" value="3" name="{{ inputId }}" id="{{ inputId }}_three">
+            <label class="btn btn-scale btn-scale-desc-3 w-100" for="{{ inputId }}_three"> 3 </label>
+        </div>
+        <div class="col p-1">
+            <input type="radio" class="btn-check" value="4" name="{{ inputId }}" id="{{ inputId }}_four">
+            <label class="btn btn-scale btn-scale-desc-4 w-100" for="{{ inputId }}_four"> 4 </label>
+        </div>
+        <div class="col p-1">
+            <input type="radio" class="btn-check" value="5" name="{{ inputId }}" id="{{ inputId }}_five">
+            <label class="btn btn-scale btn-scale-desc-5 w-100" for="{{ inputId }}_five"> 5 </label>
+        </div>
+    </div>
+    
+</div>
+
+<style>
+    .btn-scale {
+        text-align: center;
+        color: black;
+        font-size: .65rem !important;
+    }
+
+    .btn-scale-asc-0,
+    .btn-scale-desc-5 {
+        background-color: #33FF00 !important;
+    }
+
+    .btn-scale-asc-0:hover,
+    .btn-scale-desc-5:hover {
+        background-color: #2CDE00 !important;
+    }
+
+    .btn-scale-asc-1,
+    .btn-scale-desc-4 {
+        background-color: #99FF00 !important;
+    }
+
+    .btn-scale-asc-1:hover,
+    .btn-scale-desc-4:hover {
+        background-color: #85DE00 !important;
+    }
+
+    .btn-scale-asc-2,
+    .btn-scale-desc-3 {
+        background-color: #CCFF00 !important;
+    }
+
+    .btn-scale-asc-2:hover,
+    .btn-scale-desc-3:hover {
+        background-color: #B1DE00 !important;
+    }
+
+    .btn-scale-asc-3,
+    .btn-scale-desc-2 {
+        background-color: #FFCC00 !important;
+    }
+
+    .btn-scale-asc-3:hover,
+    .btn-scale-desc-2:hover {
+        background-color: #DEB100 !important;
+    }
+
+    .btn-scale-asc-4,
+    .btn-scale-desc-1 {
+        background-color: #FF6600 !important;
+    }
+
+    .btn-scale-asc-4:hover,
+    .btn-scale-desc-1:hover {
+        background-color: #DE5900 !important;
+    }
+
+    .btn-scale-asc-5,
+    .btn-scale-desc-0 {
+        background-color: #FF0000 !important;
+    }
+
+    .btn-scale-asc-5:hover,
+    .btn-scale-desc-0:hover {
+        background-color: #DE0000 !important;
+    }
+</style>
