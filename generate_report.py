@@ -162,3 +162,81 @@ class Command(BaseCommand):
             else:
                 joblog_description[COMPLETED] = True
 
+
+send_feedback_reports.py:
+
+import datetime
+from django.core.management.base import BaseCommand
+from django.core.mail import send_mail
+from your_app.models import FeedbackReport
+from your_app.utils import generate_feedback_report  # Assuming you have a utility to generate reports
+
+class Command(BaseCommand):
+    help = 'Send customer feedback reports via email'
+
+    def handle(self, *args, **options):
+        today = datetime.date.today()
+        day_of_week = today.weekday()
+
+        # Send previous day's report
+        self.send_report(today - datetime.timedelta(days=1))
+
+        # If today is Sunday (weekday == 6), send the weekly report
+        if day_of_week == 6:
+            self.send_report(today - datetime.timedelta(days=7), today)
+
+    def send_report(self, start_date, end_date=None):
+        if end_date is None:
+            end_date = start_date
+
+        # Retrieve feedback reports filtered by date range and ATM/Branch Id
+        reports = FeedbackReport.objects.filter(date__range=(start_date, end_date))
+
+        # Assuming you have a method to filter and send reports by ATM/Branch
+        for report in reports:
+            # Use your logic to determine ATM or Branch Id and corresponding email
+            atm_or_branch_id = report.atm_or_branch_id
+            email = self.get_email_for_id(atm_or_branch_id)
+
+            if email:
+                self.send_email_report(report, email)
+
+    def send_email_report(self, report, email):
+        subject = f"Customer Feedback Report for {report.atm_or_branch_id} - {report.date}"
+        message = "Please find the attached feedback report."
+        report_file = generate_feedback_report(report)  # Assuming this returns a file path or file object
+
+        send_mail(
+            subject,
+            message,
+            'your_email@example.com',  # Replace with your 'from' email
+            [email],
+            fail_silently=False,
+            html_message=message,
+            attachments=[(report_file.name, report_file.read(), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')],
+        )
+
+    def get_email_for_id(self, atm_or_branch_id):
+        # Implement your logic to retrieve the email address based on ATM or Branch Id
+        email_map = {
+            'ATM001': 'atm001@example.com',
+            'BRANCH001': 'branch001@example.com',
+            # Add other mappings here
+        }
+        return email_map.get(atm_or_branch_id)
+
+cron.py:
+
+from django_cron import CronJobBase, Schedule
+from django.core.management import call_command
+
+class SendFeedbackReportsCronJob(CronJobBase):
+    RUN_AT_TIMES = ['10:00']
+
+    schedule = Schedule(run_at_times=RUN_AT_TIMES)
+    code = 'your_app.send_feedback_reports_cron_job'  # a unique code
+
+    def do(self):
+        call_command('send_feedback_reports')
+
+
